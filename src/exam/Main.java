@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Main {
     
     static Exam exam = new ExamSort1(); // switch object-under-test
+    private static boolean DEBUG = false;
     
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
@@ -23,6 +24,6 @@ public class Main {
         for(int i=0; i < M; i++)
             input[i] = Integer.valueOf(tmp2[i]);
         
-        System.out.println("count: " + exam.run(M, Q, input));
+        System.out.println("count: " + exam.run(M, Q, input, DEBUG));
     }
 }

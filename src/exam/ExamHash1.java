@@ -1,13 +1,10 @@
 package exam;
 
-import java.util.Arrays;
-import java.util.Comparator;
 import java.util.HashMap;
-import java.util.LinkedList;
 
 public class ExamHash1 implements Exam {
     
-    public int run(int M, int Q, Integer[] input) {
+    public int run(int M, int Q, Integer[] input, boolean debug) {
         System.out.println("===== M:" + M + " =====");
         long startTime = System.nanoTime(); //DEBUG
         
@@ -16,7 +13,7 @@ public class ExamHash1 implements Exam {
             inputSubtracted[i] = inputSubtracted[i] - Q;
         
         System.out.println("time elapsed substract: " + ((double)(System.nanoTime() - startTime)) / (1000 * 1000 * 1000));
-        startTime = System.nanoTime(); //DEBUG
+        long startTimeCompare = System.nanoTime(); //DEBUG
         
         HashMap<Integer, Integer> inputSubtractedMap =
                 new HashMap<Integer, Integer>();
@@ -33,10 +30,15 @@ public class ExamHash1 implements Exam {
             Integer subtractIndex = inputSubtractedMap.get(input[idxPairFirst]);
             if(subtractIndex != null) {
                 count++;
+                if(debug)
+                    System.out.println("DEBUG: (" + input[idxPairFirst] + "," + input[subtractIndex] + ")");
+                inputSubtractedMap.remove(input[idxPairFirst] - Q);
+                inputSubtractedMap.remove(input[idxPairFirst]);
                 input[subtractIndex] = null;
             }
         }
-        System.out.println("time elapsed compare: " + ((double)(System.nanoTime() - startTime)) / (1000 * 1000 * 1000));
+        System.out.println("time elapsed compare: " + ((double)(System.nanoTime() - startTimeCompare)) / (1000 * 1000 * 1000));
+        System.out.println("time elapsed TOTAL: " + ((double)(System.nanoTime() - startTime)) / (1000 * 1000 * 1000));
         return count;
     }
 }

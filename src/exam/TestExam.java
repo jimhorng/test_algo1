@@ -10,23 +10,29 @@ import org.junit.Test;
 
 public class TestExam {
     
-    Exam exam = new ExamHash1(); // switch object-under-test
+    // switch object-under-test
+//    Exam exam = new ExamSort1();
+    Exam exam = new ExamHash1();
+//    Exam exam = new ExamHash2();
+    
+    private static boolean DEBUG = false;
+//    private static boolean DEBUG = true;
     
     @Test
     public void test_8() {
         int M = 8;
         int Q = 3;
         Integer[] input = new Integer[]{1, 3, 6, 8, 9, 20, 23, 4};
-        assertEquals(3, this.exam.run(M, Q, input));
+        assertEquals(3, this.exam.run(M, Q, input, DEBUG));
     }
     
     @Test
     public void test_20() {
         int M = 20;
         int Q = 4;
-        Integer[] input = new Integer[]{1, 3, 6, 8, 9, 20, 23, 4, 100, 104,
+        Integer[] input = new Integer[]{1, 12, 6, 8, 9, 20, 23, 4, 100, 104,
                                         5, 13, 24, 99, 3452, 0, 56, 454, 3241, -334};
-        assertEquals(5, this.exam.run(M, Q, input));
+        assertEquals(5, this.exam.run(M, Q, input, DEBUG));
     }
     
     @Test
@@ -34,7 +40,7 @@ public class TestExam {
         int M = 10;
         int Q = 3;
         Integer[] input = new Integer[]{1, 3, 3, 6, 6, 20, 23, 4, 100, 104};
-        assertEquals(4, this.exam.run(M, Q, input));
+        assertEquals(4, this.exam.run(M, Q, input, DEBUG));
     }
     
     @Test
@@ -42,7 +48,7 @@ public class TestExam {
         int M = 100000;
         int Q = 3;
         Integer[] input = generateLargeIntArray(M);
-        assertEquals(3, this.exam.run(M, Q, input));
+        assertEquals(3, this.exam.run(M, Q, input, DEBUG));
     }
     
     private Integer[] generateLargeIntArray(int size) {

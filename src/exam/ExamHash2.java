@@ -2,8 +2,9 @@ package exam;
 
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.HashMap;
 
-public class ExamSort1 implements Exam {
+public class ExamHash2 implements Exam {
     
     public int run(int M, int Q, Integer[] input, boolean debug) {
         System.out.println("===== M:" + M + " =====");
@@ -21,32 +22,29 @@ public class ExamSort1 implements Exam {
         });
         System.out.println("time elapsed sort: " + ((double)(System.nanoTime() - startTimeSort)) / (1000 * 1000 * 1000));
         
-        long startTimeSubtract = System.nanoTime(); //DEBUG
-//        System.out.println("DEBUG: sorted:" + Arrays.toString(input));
         
-        Integer[] inputSubtracted = input.clone();
-        for(int i = 0; i < input.length; i++)
-            inputSubtracted[i] = inputSubtracted[i] - Q;
+        HashMap<Integer, Integer> inputMap =
+                new HashMap<Integer, Integer>();
+            
+        for(int i=0; i < input.length; i++) {
+            inputMap.put(input[i], i);
+        }
         
-        System.out.println("time elapsed substract: " + ((double)(System.nanoTime() - startTimeSubtract)) / (1000 * 1000 * 1000));
+        // compare
         long startTimeCompare = System.nanoTime(); //DEBUG
-        
 //        System.out.println("DEBUG: Matached pairs:");
         int count = 0;
         for(int idxPairFirst = 0 ; idxPairFirst < M ; idxPairFirst++) {
             if(input[idxPairFirst] == null)
                 continue;
-            for(int idxPairSecond = 1 ; idxPairSecond < M ; idxPairSecond++) {
-                if(input[idxPairSecond] == null || idxPairFirst == idxPairSecond)
-                    continue;
-                if(input[idxPairFirst].equals(inputSubtracted[idxPairSecond])) {
-                    count++;
-                    if(debug)
-                        System.out.println("DEBUG: (" + input[idxPairFirst] + "," + input[idxPairSecond] + ")");
-                    input[idxPairFirst] = null;
-                    input[idxPairSecond] = null;
-                    break;
-                }
+            Integer idxPairSecond = inputMap.get(input[idxPairFirst] - Q);
+            if(idxPairSecond != null) {
+                count++;
+                if(debug)
+                    System.out.println("DEBUG: (" + input[idxPairFirst] + "," + input[idxPairSecond] + ")");
+                inputMap.remove(input[idxPairFirst]);
+                inputMap.remove(input[idxPairFirst] - Q);
+                input[idxPairSecond] = null;
             }
         }
         System.out.println("time elapsed compare: " + ((double)(System.nanoTime() - startTimeCompare)) / (1000 * 1000 * 1000));
