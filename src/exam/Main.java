@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Main {
     
-    static Exam exam = new ExamSort1(); // switch object-under-test
+    static Exam exam = new ExamSortFullCompare1(); // switch object-under-test
     private static boolean DEBUG = false;
     
     public static void main(String[] args) {

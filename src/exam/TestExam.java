@@ -6,14 +6,15 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class TestExam {
     
     // switch object-under-test
-//    Exam exam = new ExamSort1();
-    Exam exam = new ExamHash1();
-//    Exam exam = new ExamHash2();
+    Exam exam = new ExamSortFullCompare1();
+//    Exam exam = new ExamHash1();
+//    Exam exam = new ExamSortHash1();
     
     private static boolean DEBUG = false;
 //    private static boolean DEBUG = true;
@@ -30,9 +31,9 @@ public class TestExam {
     public void test_20() {
         int M = 20;
         int Q = 4;
-        Integer[] input = new Integer[]{1, 12, 6, 8, 9, 20, 23, 4, 100, 104,
+        Integer[] input = new Integer[]{1, 100, 6, 4, 9, 20, 23, 8, 12, 104,
                                         5, 13, 24, 99, 3452, 0, 56, 454, 3241, -334};
-        assertEquals(5, this.exam.run(M, Q, input, DEBUG));
+        assertEquals(6, this.exam.run(M, Q, input, DEBUG));
     }
     
     @Test
@@ -43,6 +44,7 @@ public class TestExam {
         assertEquals(4, this.exam.run(M, Q, input, DEBUG));
     }
     
+//    @Ignore
     @Test
     public void test_100000() {
         int M = 100000;

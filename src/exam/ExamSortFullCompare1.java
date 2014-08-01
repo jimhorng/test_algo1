@@ -3,7 +3,7 @@ package exam;
 import java.util.Arrays;
 import java.util.Comparator;
 
-public class ExamSort1 implements Exam {
+public class ExamSortFullCompare1 implements Exam {
     
     public int run(int M, int Q, Integer[] input, boolean debug) {
         System.out.println("===== M:" + M + " =====");
