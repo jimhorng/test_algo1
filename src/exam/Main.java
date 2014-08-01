@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Main {
     
-    static Exam exam = new ExamSort1(); // switch object to test
+    static Exam exam = new ExamSort1(); // switch object-under-test
     
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);

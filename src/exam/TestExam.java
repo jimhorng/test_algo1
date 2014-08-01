@@ -10,10 +10,10 @@ import org.junit.Test;
 
 public class TestExam {
     
-    Exam exam = new ExamSort1();
+    Exam exam = new ExamHash1(); // switch object-under-test
     
     @Test
-    public void test1() {
+    public void test_8() {
         int M = 8;
         int Q = 3;
         Integer[] input = new Integer[]{1, 3, 6, 8, 9, 20, 23, 4};
@@ -21,7 +21,7 @@ public class TestExam {
     }
     
     @Test
-    public void test2() {
+    public void test_20() {
         int M = 20;
         int Q = 4;
         Integer[] input = new Integer[]{1, 3, 6, 8, 9, 20, 23, 4, 100, 104,
@@ -30,7 +30,7 @@ public class TestExam {
     }
     
     @Test
-    public void test3() {
+    public void test_repeated() {
         int M = 10;
         int Q = 3;
         Integer[] input = new Integer[]{1, 3, 3, 6, 6, 20, 23, 4, 100, 104};
@@ -38,7 +38,7 @@ public class TestExam {
     }
     
     @Test
-    public void test4() {
+    public void test_100000() {
         int M = 100000;
         int Q = 3;
         Integer[] input = generateLargeIntArray(M);
