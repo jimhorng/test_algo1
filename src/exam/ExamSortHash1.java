@@ -2,7 +2,6 @@ package exam;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.HashMap;
 
 public class ExamSortHash1 implements Exam {
@@ -13,14 +12,7 @@ public class ExamSortHash1 implements Exam {
         
         // sort
         long startTimeSort = System.nanoTime(); //DEBUG
-        Arrays.sort(input, new Comparator<Integer>()
-        {
-            @Override
-            public int compare(Integer x, Integer y)
-            {
-                return x - y;
-            }
-        });
+        Arrays.sort(input);
         System.out.println("time elapsed sort: " + ((double)(System.nanoTime() - startTimeSort)) / (1000 * 1000 * 1000));
         
         
