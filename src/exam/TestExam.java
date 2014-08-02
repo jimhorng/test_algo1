@@ -12,9 +12,9 @@ import org.junit.Test;
 public class TestExam {
     
     // switch object-under-test
-    Exam exam = new ExamSortFullCompare1();
+//    Exam exam = new ExamSortFullCompare1();
 //    Exam exam = new ExamHash1();
-//    Exam exam = new ExamSortHash1();
+    Exam exam = new ExamSortHash1();
     
     private static boolean DEBUG = false;
 //    private static boolean DEBUG = true;

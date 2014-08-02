@@ -4,7 +4,10 @@ import java.util.Scanner;
 
 public class Main {
     
-    static Exam exam = new ExamSortFullCompare1(); // switch object-under-test
+    // switch object-under-test
+//  Exam exam = new ExamSortFullCompare1();
+//  Exam exam = new ExamHash1();
+    Exam exam = new ExamSortHash1();
     private static boolean DEBUG = false;
     
     public static void main(String[] args) {
