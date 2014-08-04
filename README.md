@@ -1,21 +1,28 @@
 Name: Jim Horng
 Email: jimhorng@gmail.com
 
+# Additional Requirements #
+* Series integers of M might contains repeated values
+
+
 # Algorithm #
-Given M distinct integers, they will be stored in an array named array_origin.
-all integers in array_origin will be subtracted by Q and store in array_substracted.
+Logic at exam.ExamSortHash1.java  
+1.  Sort given M integers stored in an array(named array_origin)  
+    (to get maximum distinct pairs)
+    * cost: timsort, O(nlog(n))
+2.  Convert array_origin to hashmap(named hashmap_inverted)  , key as integer, value as list of indexes of that integer in array_origin  
+    (e.g. 4 4 1 becomes {4:[0,1], 1:[2]})
+3.  Iterate all integers in array_origin, find if the value of integer + Q exists as key in hashmap_inverted, 
+    * if exists, get index back and remove index, if key-value's index is empty, remove all key
+    * if not, skip to next integer
 
-The computation(subtraction) cost is O(n) in any cases.
 
-Each integer in array_origin will be compare to each integer in array_substracted, except for integer with the same index.
-If the values equals, meaning that the difference between the two integer of pair which composed by integer of array_origin index and integer of array_subtracted index, equals to Q.
-Then, the value of both index in array_origin will be marked as null to make next iteration to skip these two integer, in order to satisfy the condition of distinct pair.
-The cost here are integer comparisons: 
-* O(n^2) on worse case, where there's no pair difference that matches Q.
-* O(n) on best case, where every pair difference matches Q and are composed by integer and its next integer.
-        e.g. Q=3, integer series: 0 3 6 9 12 15...etc.
+# Performance #
+* 0.4s for M=100000 on my local machine
+(subtract and compare version cost 18s)
+
 
 # Run the Code #
-* for console: run live365_exam.Exam.main()
-* for unit test: run live365_exam.TestExam.java as unit test
+* for console: run exam.Main.java
+* for unit test: run exam.TestExam.java as unit test
     - include lib/*.jar as CLASSPATH
