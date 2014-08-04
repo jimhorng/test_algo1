@@ -5,9 +5,9 @@ import java.util.Scanner;
 public class Main {
     
     // switch object-under-test
-//  Exam exam = new ExamSortFullCompare1();
-//  Exam exam = new ExamHash1();
-    Exam exam = new ExamSortHash1();
+//  static Exam exam = new ExamSortFullCompare1();
+//  static Exam exam = new ExamHash1();
+    static Exam exam = new ExamSortHash1();
     private static boolean DEBUG = false;
     
     public static void main(String[] args) {
